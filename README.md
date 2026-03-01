@@ -1,6 +1,8 @@
-# cyfetch – Fast System Info in Pure C
+# cyfetch – Fast System Info in Pure C (Beta)
 
-**cyfetch** es un *fetcher de sistema* ultra rápido, ligero y completamente escrito en **C puro**, diseñado para mostrar tu información del sistema al estilo *Neofetch/Fastfetch* pero **sin depender de herramientas externas**.
+**cyfetch** es un *fetcher de sistema* ultra rápido, ligero y completamente escrito en **C puro**, diseñado para mostrar tu información del sistema al estilo *Neofetch/Fastfetch* pero **sin depender de herramientas externas**.  
+
+> ⚠️ **Beta:** Actualmente solo probado en **Arch Linux** y derivados. Puede no funcionar correctamente en otras distribuciones.
 
 ## 🔹 Características principales
 
@@ -8,7 +10,7 @@
 - Detecta tu **GPU integrada o dedicada** usando solo **vendor/device IDs**, incluyendo AMD Vega, Intel y NVIDIA.  
 - Mantiene un **ASCII artístico + información alineada a la derecha**, personalizable.  
 - Todo es **ultra rápido** (~3–5 ms), sin forks ni ejecución de programas externos.  
-- Pequeño y portable: solo necesitas **GCC y Linux**.
+- Pequeño y portable: solo necesitas **GCC y Arch Linux**.
 
 ## 🔹 Por qué cyfetch
 
