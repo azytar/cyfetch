@@ -9,7 +9,7 @@
 #define BUF 4096
 static char buffer[BUF];
 
-// ------------------- utilidades -------------------
+// ------------------- utilidades ------------------- \\
 void trim_newline(char *s) {
     char *p = strchr(s, '\n');
     if (p) *p = 0;
@@ -24,7 +24,7 @@ int read_file(const char *path, char *out, int size) {
     return n;
 }
 
-// ------------------- obtener info -------------------
+// ------------------- obtener info ------------------- \\
 void get_distro(char *out) {
     if (read_file("/etc/os-release", buffer, BUF) < 0) { strcpy(out, "Linux"); return; }
     char *id = strstr(buffer, "ID=");
@@ -38,7 +38,7 @@ void get_distro(char *out) {
 void get_cpu(char *out) {
     if (read_file("/proc/cpuinfo", buffer, BUF) < 0) return;
     char *model = strstr(buffer, "model name");
-    if (!model) model = strstr(buffer, "Processor"); // fallback
+    if (!model) model = strstr(buffer, "Processor"); // fallback \\
     if (!model) return;
     model = strchr(model, ':');
     if (!model) return;
@@ -65,7 +65,7 @@ void get_uptime(char *out) {
     snprintf(out, 64, "%dh %dm", h, m);
 }
 
-// ------------------- GPU con mapeo de IDs -------------------
+// ------------------- GPU con mapeo de IDs ------------------- \\
 void get_gpu(char *out) {
     DIR *dp = opendir("/sys/bus/pci/devices/");
     if (!dp) { strcpy(out,"Unknown GPU"); return; }
@@ -77,16 +77,16 @@ void get_gpu(char *out) {
         char path[BUF], class_buf[16], vendor_buf[16], device_buf[16];
         FILE *f;
 
-        // Leer clase
+        // Leer clase \\
         snprintf(path, sizeof(path), "/sys/bus/pci/devices/%s/class", entry->d_name);
         f = fopen(path,"r"); if(!f) continue;
         if(!fgets(class_buf,sizeof(class_buf),f)){ fclose(f); continue; }
         fclose(f);
 
         unsigned int class_code; sscanf(class_buf,"%x",&class_code);
-        if((class_code>>16)!=0x03) continue; // VGA o 3D
+        if((class_code>>16)!=0x03) continue; // VGA o 3D \\
 
-        // Leer vendor y device
+        // Leer vendor y device \\
         snprintf(path,sizeof(path),"/sys/bus/pci/devices/%s/vendor", entry->d_name);
         if(read_file(path,vendor_buf,sizeof(vendor_buf))<0) continue;
         trim_newline(vendor_buf);
@@ -98,8 +98,8 @@ void get_gpu(char *out) {
         sscanf(vendor_buf,"0x%x",&v);
         sscanf(device_buf,"0x%x",&d);
 
-        // Tabla mínima de GPUs
-        if(v==0x1002 && d==0x15d8) { // AMD Vega 3
+        // Tabla mínima de GPUs \\
+        if(v==0x1002 && d==0x15d8) { // AMD Vega 3 \\ -- hmm i think change this 
             snprintf(out,256,"%s : VGA compatible controller : Advanced Micro Devices, Inc. Picasso/Raven 2", entry->d_name);
             closedir(dp);
             return;
@@ -107,13 +107,13 @@ void get_gpu(char *out) {
         if(v==0x8086) { snprintf(out,256,"%s : VGA compatible controller : Intel Integrated Graphics", entry->d_name); closedir(dp); return; }
         if(v==0x10de) { snprintf(out,256,"%s : VGA compatible controller : NVIDIA GPU", entry->d_name); closedir(dp); return; }
 
-        // si no coincide, seguir buscando
+        // si no coincide, seguir buscando \\
     }
     closedir(dp);
     strcpy(out,"Unknown GPU");
 }
 
-// ------------------- imprimir ASCII + info -------------------
+// ------------------- imprimir ASCII + info ------------------- \\
 void print_ascii_info(const char *distro, const char *user, const char *host,
                       const char *kernel, const char *uptime, const char *cpu,
                       const char *ram, const char *gpu) {
@@ -128,7 +128,7 @@ void print_ascii_info(const char *distro, const char *user, const char *host,
     };
     int lines = sizeof(ascii)/sizeof(ascii[0]);
     for(int i=0;i<lines;i++){
-        printf("\033[1;36m%s\033[0m",ascii[i]); // cyan
+        printf("\033[1;36m%s\033[0m",ascii[i]); // cyan \\
         switch(i){
             case 0: printf("   \033[1;33m%s@%s\033[0m",user,host); break;
             case 1: printf("   \033[1;32mOS:\033[0m %s",distro); break;
@@ -142,7 +142,7 @@ void print_ascii_info(const char *distro, const char *user, const char *host,
     }
 }
 
-// ------------------- main -------------------
+// ------------------- main ------------------- \\
 int main(){
     char distro[64], cpu[256], ram[128], gpu[256], uptime[64], kernel[128], host[64];
 
