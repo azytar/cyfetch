@@ -21,6 +21,7 @@
 ## 🔹 Instalación y uso
 
 ```bash
+git clone https://github.com/azytar/cyfetch.git
 gcc cyfetch.c -o cyfetch
 ./cyfetch
 sudo cp cyfetch /usr/bin/cyfetch
