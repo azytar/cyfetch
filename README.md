@@ -22,6 +22,7 @@
 
 ```bash
 git clone https://github.com/azytar/cyfetch.git
+cd cyfetch
 gcc cyfetch.c -o cyfetch
 ./cyfetch
 sudo cp cyfetch /usr/bin/cyfetch
