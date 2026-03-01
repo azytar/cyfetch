@@ -9,7 +9,7 @@
 - Detecta **CPU, RAM, Kernel, Distro, Uptime** y más directamente desde `/proc` y `sysfs`.  
 - Detecta tu **GPU integrada o dedicada** usando solo **vendor/device IDs**, incluyendo AMD Vega, Intel y NVIDIA.  
 - Mantiene un **ASCII artístico + información alineada a la derecha**, personalizable.  
-- Todo es **ultra rápido** (~3–5 ms), sin forks ni ejecución de programas externos.  
+- Todo es **ultra rápido** (~4–6 ms), sin forks ni ejecución de programas externos.  
 - Pequeño y portable: solo necesitas **GCC y Arch Linux**.
 
 ## 🔹 Por qué cyfetch
