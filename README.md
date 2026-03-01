@@ -23,3 +23,4 @@
 ```bash
 gcc cyfetch.c -o cyfetch
 ./cyfetch
+sudo cp cyfetch /usr/bin/cyfetch
