@@ -18,6 +18,7 @@
 ## 🔹 Instalación y uso
 
 ```bash
+sudo pacman -S vulkan-headers vulkan-icd-loader
 git clone https://github.com/azytar/cyfetch.git
 cd cyfetch
 gcc cyfetch.c -o cyfetch -lvulkan
