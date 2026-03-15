@@ -20,6 +20,6 @@
 ```bash
 git clone https://github.com/azytar/cyfetch.git
 cd cyfetch
-gcc cyfetch.c -o cyfetch
+gcc cyfetch.c -o cyfetch -lvulkan
 ./cyfetch
 sudo cp cyfetch /usr/bin/cyfetch
