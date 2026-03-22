@@ -9,7 +9,7 @@
 - Detecta **CPU, RAM, Kernel, Distro, Uptime** y más directamente desde `/proc` y `sysfs`.  
 - Detecta tu **GPU integrada o dedicada**   
 - Mantiene un **ASCII artístico + información alineada a la derecha**.  
-- Pequeño y portable: solo necesitas **GCC y Arch Linux**.
+- Pequeño y portable: solo necesitas **GCC, vulkan y Arch Linux**.
 
 ## 🔹 Por qué cyfetch
  
